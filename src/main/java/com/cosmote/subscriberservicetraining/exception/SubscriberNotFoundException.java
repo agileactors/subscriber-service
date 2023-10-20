@@ -1,4 +1,4 @@
-package com.cosmote.ms.subscriberservice.exception;
+package com.cosmote.subscriberservicetraining.exception;
 
 public class SubscriberNotFoundException extends ValidationException {
 

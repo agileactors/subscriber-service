@@ -3,37 +3,36 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.cosmote.ms</groupId>
-		<artifactId>cosmote-ms-starter-spring-boot</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.7.16</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cosmote.ms</groupId>
-	<artifactId>subscriber-service</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>subscriber-service</name>
+	<groupId>com.cosmote</groupId>
+	<artifactId>subscriber-service-training</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>subscriber-service-training</name>
 	<description>Demo project for Spring Boot</description>
-
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-
 	<dependencies>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.3.2</version>
-			<scope>test</scope>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>de.flapdoodle.embed</groupId>
-			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -43,35 +42,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<id>add-functional-test-source</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>add-test-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/functionaltest/java</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<configuration>
-				<repository>nexus:8082/repository/docker/subscriber-service</repository>
-				<tag>${project.version}</tag>
-				<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

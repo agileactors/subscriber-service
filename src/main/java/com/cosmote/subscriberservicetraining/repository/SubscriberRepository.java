@@ -1,7 +1,6 @@
-package com.cosmote.ms.subscriberservice.repository;
+package com.cosmote.subscriberservicetraining.repository;
 
-import com.cosmote.ms.subscriberservice.entities.Subscriber;
-
+import com.cosmote.subscriberservicetraining.domain.Subscriber;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface SubscriberRepository extends MongoRepository<Subscriber, String> {
