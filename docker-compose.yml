@@ -1,0 +1,21 @@
+version: '3'
+services:
+  subscriber-service:
+    image: subscriber-service:1.0  # Replace with the actual image name and tag
+    ports:
+      - "8080:8080"  # Map the API service port to the host
+    depends_on:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_HOST: "mongo"  # Use the name of the MongoDB service as the hostname
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"  # Map the MongoDB port to the host
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
