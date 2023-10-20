@@ -1,0 +1,144 @@
+openapi: 3.0.0
+info:
+  title: Cosmote Subscriber Service API
+  version: 1.0-SNAPSHOT
+paths:
+  /api/subscribers:
+    get:
+      summary: returns a list of subscribers
+      responses:
+        '200':
+          description: a JSON array of sybscribers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    email:
+                      type: string
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    phoneNumber:
+                      type: string
+    post:
+      summary: creates a subscriber
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                phoneNumber:
+                  type: string
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: string
+        '409':
+          description: Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+  /api/subcribers/{id}:
+    get:
+      summary: returns a subscriber by its id
+      parameters:
+        - name: id
+          in: path
+          description: the id of the subscriber
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: A subscriber object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  lastName:
+                    type: string
+                  phoneNumber:
+                    type: string
+        '404':
+          description: Couldn't find the subscriber
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    put:
+      summary: updates a subscriber
+      parameters:
+        - name: id
+          in: path
+          description: the id of the subscriber
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                phoneNumber:
+                  type: string
+      responses:
+        '200':
+          description: Subscriber was updated
+        '404':
+          description: Couldn't find the subscriber
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+    delete:
+      summary: deletes a subscriber
+      parameters:
+        - name: id
+          in: path
+          description: the id of the subscriber
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Subscriber was deleted
